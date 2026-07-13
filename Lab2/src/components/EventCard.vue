@@ -27,6 +27,7 @@ defineProps<{
 </template>
 
 
+
 <style scoped>
 .event-class {
   display: flex;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import EventCard from '@/components/EventCard.vue'
+  import StudentCard from '@/components/StudentCard.vue'
   import Categories from '@/components/Categories.vue'
   import type { Event, Student } from '@/types'
   import { ref, onMounted } from 'vue'
@@ -28,10 +28,12 @@ onMounted(() => {
 
 
 <template>
-  <h1>Events For Good</h1>
-  <div class="events">
-    <EventCard v-for="event in events" :key="event.id" :event="event" />
-    <Categories v-for="event in events" :key="'cat-' + event.id" :event="event" />
+    <h1>Students</h1>
+  <div class="students">
+    <div v-for="student in students" :key="student.id" class="student-card">
+      <p><b>{{ student.name }} {{ student.surname }}</b></p>
+      <p>GPA: {{ student.gpa }}</p>
+    </div>
   </div>
 </template>
 

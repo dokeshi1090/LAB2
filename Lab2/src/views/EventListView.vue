@@ -3,17 +3,16 @@
   import Categories from '@/components/Categories.vue'
   import type { Event } from '@/types'
   import { ref, onMounted } from 'vue'
-  import axios from 'axios'
+  import EventService from '@/services/EventService'
 
 const events = ref<Event[] | null>(null)
 
-onMounted(async () => {
-  try {
-    const response = await axios.get<Event[]>('https://my-json-server.typicode.com/dokeshi1090/Mock-Server_lab2/events')
-    events.value = response.data
-  } catch (error) {
-    console.error('There was an Error:', error)
-  }
+onMounted(() => {
+   EventService.getEvents()
+    .then ((response) => {
+      events.value = response.data
+    })
+
 })
 </script>
 
